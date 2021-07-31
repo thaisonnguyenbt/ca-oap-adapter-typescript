@@ -1,0 +1,22 @@
+service: ca-oap-adapter-typescript
+package:
+  individually: true
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: ap-southeast-1
+
+functions:
+  hello:
+    handler: src/handlers/handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
